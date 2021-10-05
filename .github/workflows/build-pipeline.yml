@@ -26,16 +26,17 @@ jobs:
       run: npm ci
     - name: runall
       run: npm test
-
-
   deploy:
     needs: checking
     runs-on: ubuntu-latest
       steps:
-      - name: Build
-        run: npm run build
-      - name: test
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
           folder: dist
+
+  build:
+        needs: [deploy, checking]
+        - name: Build
+        run: npm run build
