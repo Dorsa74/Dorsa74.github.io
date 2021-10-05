@@ -24,8 +24,7 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm ci
-      - name: runall
-        run: npm test
+
   deploy:
     needs: checking
     runs-on: ubuntu-latest
